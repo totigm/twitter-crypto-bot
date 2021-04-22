@@ -1,0 +1,32 @@
+{
+  "name": "twitter-crypto-bot",
+  "version": "0.0.1",
+  "description": "This is a Twitter bot that tweets about cryptocurrencies prices every certain amount of minutes",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "prod": "npm start prod",
+    "dev": "npm start dev"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "twit": "^2.2.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/totigm/twitter-crypto-bot.git"
+  },
+  "keywords": [
+    "crypto",
+    "twitter",
+    "bot"
+  ],
+  "author": "Toti Muñoz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/totigm/twitter-crypto-bot/issues"
+  },
+  "homepage": "https://github.com/totigm/twitter-crypto-bot#readme"
+}
