@@ -23,7 +23,7 @@ const createMessage = (coin, priceData, lastTweetPrice = 0) => {
         priceData.dayChangePercent
     );
     message += "\n" + getHashtags();
-    if (config.node_env === "dev") message = message.replaceAll(/\$|#/g, "[DEV]");
+    if (config.node_env === "dev") message = message.replaceAll(/\$|#/g, (symbol) => `[${symbol}]`);
     return message;
 };
 
