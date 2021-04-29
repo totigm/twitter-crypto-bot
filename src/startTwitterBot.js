@@ -21,10 +21,10 @@ const tweet = async (coin, Twitter) => {
 
 const startTwitterBot = (coin, intervalMinutes) => {
     const Twitter = new Twit({
-        consumer_key: config.CONSUMER_KEY,
-        consumer_secret: config.CONSUMER_SECRET,
-        access_token: config.ACCESS_TOKEN,
-        access_token_secret: config.ACCESS_TOKEN_SECRET,
+        consumer_key: config.consumer_key,
+        consumer_secret: config.consumer_secret,
+        access_token: config.access_token,
+        access_token_secret: config.access_token_secret,
     });
 
     const intervalMs = utils.minutesToMs(intervalMinutes);
