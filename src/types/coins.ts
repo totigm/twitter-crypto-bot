@@ -1,4 +1,4 @@
 export interface Coin {
-    name: string;
-    symbol: string;
+  name: string;
+  symbol: string;
 }

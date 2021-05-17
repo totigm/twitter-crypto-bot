@@ -1,14 +1,14 @@
 export interface PriceData {
-    price: number;
-    previousPrice: number;
+  price: number;
+  previousPrice: number;
 }
 
 export interface PriceChange {
-    price: number;
-    percent: number;
+  price: number;
+  percent: number;
 }
 
 export interface Comparison {
-    intro: string;
-    change: PriceChange;
+  intro: string;
+  change: PriceChange;
 }
