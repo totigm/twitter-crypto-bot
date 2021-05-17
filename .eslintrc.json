@@ -5,14 +5,14 @@
         "project": "./tsconfig.json"
     },
     "plugins": ["@typescript-eslint"],
-    "extends": ["airbnb-typescript"],
+    "extends": ["airbnb-typescript", "prettier"],
     "rules": {
         "no-console": "off",
         "@typescript-eslint/comma-dangle": "off",
         "lines-between-class-members": "off",
         "@typescript-eslint/lines-between-class-members": "off",
         "max-len": ["warn", { "code": 120 }],
-        "@typescript-eslint/quotes": ["error", "double"],
+        "@typescript-eslint/quotes": ["error", "single"],
         "@typescript-eslint/naming-convention": [
             "error",
             {
