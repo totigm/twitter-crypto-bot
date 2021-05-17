@@ -12,8 +12,6 @@
   "dependencies": {
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "node-fetch": "^2.6.1",
     "twit": "^2.2.11"
   },
   "repository": {
@@ -32,15 +30,15 @@
   },
   "homepage": "https://github.com/totigm/twitter-crypto-bot#readme",
   "devDependencies": {
-    "@types/axios": "^0.14.0",
     "@types/node": "^15.0.1",
-    "@types/node-fetch": "^2.5.10",
     "@types/twit": "^2.2.28",
     "@typescript-eslint/eslint-plugin": "^4.23.0",
     "@typescript-eslint/parser": "^4.23.0",
     "eslint": "^7.26.0",
-    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-plugin-import": "^2.23.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.23.2",
     "nodemon": "^2.0.7",
     "ts-node": "^9.1.1",
     "tslib": "^2.2.0",
