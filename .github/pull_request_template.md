@@ -1,13 +1,10 @@
-# Description
+## Description
+A clear and concise description of what the pull request is about.
 
+## Proposed changes
+- This is one change
+- This is another change
 
-# Proposed changes
-- 
+## More information
+Any information that can help understanding this pull request (logs, screenshots, additional context, etc.).
 
-# Implementation details
-
-
-# Testing
-
-
-# Why is the PR in DRAFT?
