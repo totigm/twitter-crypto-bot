@@ -6,8 +6,3 @@
 
 ## Implementation details
 
-
-## Testing
-
-
-## Why is the PR in DRAFT?
