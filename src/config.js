@@ -6,7 +6,13 @@ dotenv.config({
     path,
 });
 
-process.env.NODE_ENV = NODE_ENV;
+const config = {
+    node_env: NODE_ENV,
+    consumer_key: process.env.CONSUMER_KEY,
+    consumer_secret: process.env.CONSUMER_SECRET,
+    access_token: process.env.ACCESS_TOKEN,
+    access_token_secret: process.env.ACCESS_TOKEN_SECRET,
+    server_url: process.env.SERVER_URL,
+};
 
-const config = process.env;
 module.exports = config;
