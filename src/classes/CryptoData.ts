@@ -1,15 +1,14 @@
 import axios from "axios";
-import { Decimals, PriceData } from "../types";
+import { Decimals, PriceData, CryptoDataParams } from "../types";
 import { formatDecimals, formatObject } from "../utils";
 
 export default class CryptoData {
     private symbol: string;
+    private decimals: Decimals;
 
-    constructor(
-        symbol: string,
-        private decimals: Decimals = { min: 0, max: 8 }
-    ) {
+    constructor({ symbol, decimals = { min: 0, max: 8 } }: CryptoDataParams) {
         this.symbol = symbol.toUpperCase();
+        this.decimals = decimals;
     }
 
     public async get24HrPriceData(): Promise<PriceData> {

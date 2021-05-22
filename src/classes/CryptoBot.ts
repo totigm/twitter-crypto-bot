@@ -1,7 +1,7 @@
 import CryptoData from "./CryptoData";
 import MessageGenerator from "./MessageGenerator";
 import TwitterBot from "./TwitterBot";
-import { Credentials, Coin, Decimals, Comparison } from "../types";
+import { Comparison, CryptoBotParams } from "../types";
 import { getChange, minutesToMs } from "../utils";
 
 class CryptoBot {
@@ -10,19 +10,27 @@ class CryptoBot {
     private _messageGenerator: MessageGenerator;
     private _lastTweetPrice;
 
-    constructor(
-        { name, symbol }: Coin,
-        credentials: Credentials,
-        decimals: Decimals = { min: 0, max: 8 }
-    ) {
+    constructor({
+        coin: { name, symbol },
+        credentials,
+        decimals = { min: 0, max: 8 },
+    }: CryptoBotParams) {
         const coin = {
-            name,
+            name: name,
             symbol: symbol.toUpperCase(),
         };
 
         this._twitterBot = new TwitterBot(credentials);
-        this._cryptoData = new CryptoData(coin.symbol, decimals);
-        this._messageGenerator = new MessageGenerator(coin, decimals);
+
+        this._cryptoData = new CryptoData({
+            symbol: coin.symbol,
+            decimals,
+        });
+
+        this._messageGenerator = new MessageGenerator({
+            coin,
+            decimals,
+        });
     }
 
     private _addComparison(
