@@ -22,7 +22,7 @@ const startServer = (coin) => {
         res.send(messageData.message);
     });
 
-    const serverUrl = config.SERVER_URL;
+    const serverUrl = config.server_url;
     if (serverUrl) keepAlive(serverUrl, 10);
 };
 
