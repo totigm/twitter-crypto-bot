@@ -1,4 +1,6 @@
-import { Coin, Credentials, Decimals } from "./";
+import { Coin } from './coins';
+import { Credentials } from './credentials';
+import { Decimals } from './format';
 
 export interface CryptoBotParams {
     coin: Coin;

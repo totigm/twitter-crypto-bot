@@ -17,8 +17,14 @@ class CryptoBot {
         };
 
         this.twitterBot = new TwitterBot(credentials);
-        this.cryptoData = new CryptoData(coin.symbol, decimals);
-        this.messageGenerator = new MessageGenerator(coin, decimals);
+        this.cryptoData = new CryptoData({
+            symbol: coin.symbol,
+            decimals,
+        });
+        this.messageGenerator = new MessageGenerator({
+            coin,
+            decimals,
+        });
     }
 
     private static addComparison(comparisonsList: Comparison[], comparison: Comparison) {
