@@ -1,9 +1,9 @@
 const dotenv = require("dotenv");
-const NODE_ENV = process.argv.find((value) => value === "prod") ?? "dev";
-const path = `.env${NODE_ENV === "prod" ? "" : ".dev"}`;
+
+const NODE_ENV = process.env.NODE_ENV;
 
 dotenv.config({
-    path,
+    path: `.env.${NODE_ENV}`,
 });
 
 const config = {
@@ -15,4 +15,4 @@ const config = {
     server_url: process.env.SERVER_URL,
 };
 
-module.exports = config;
+export { config };
