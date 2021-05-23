@@ -1,80 +1,63 @@
-import CryptoData from "./CryptoData";
-import MessageGenerator from "./MessageGenerator";
-import TwitterBot from "./TwitterBot";
-import { Comparison, CryptoBotParams } from "../types";
-import { getChange, minutesToMs } from "../utils";
+import CryptoData from './CryptoData';
+import MessageGenerator from './MessageGenerator';
+import TwitterBot from './TwitterBot';
+import { Comparison, CryptoBotParams } from '../types';
+import { getChange, minutesToMs } from '../utils';
 
 class CryptoBot {
-    private _twitterBot: TwitterBot;
-    private _cryptoData: CryptoData;
-    private _messageGenerator: MessageGenerator;
-    private _lastTweetPrice;
+    private twitterBot: TwitterBot;
+    private cryptoData: CryptoData;
+    private messageGenerator: MessageGenerator;
+    private lastTweetPrice;
 
-    constructor({
-        coin: { name, symbol },
-        credentials,
-        decimals = { min: 0, max: 8 },
-    }: CryptoBotParams) {
+    constructor({ coin: { name, symbol }, credentials, decimals = { min: 0, max: 8 } }: CryptoBotParams) {
         const coin = {
-            name: name,
+            name,
             symbol: symbol.toUpperCase(),
         };
 
-        this._twitterBot = new TwitterBot(credentials);
-
-        this._cryptoData = new CryptoData({
+        this.twitterBot = new TwitterBot(credentials);
+        this.cryptoData = new CryptoData({
             symbol: coin.symbol,
             decimals,
         });
-
-        this._messageGenerator = new MessageGenerator({
+        this.messageGenerator = new MessageGenerator({
             coin,
             decimals,
         });
     }
 
-    private _addComparison(
-        comparisonsList: Comparison[],
-        comparison: Comparison
-    ) {
+    private static addComparison(comparisonsList: Comparison[], comparison: Comparison) {
         if (comparison.change.price !== 0) comparisonsList.push(comparison);
     }
 
-    private _getComparisons(
-        price: number,
-        previousPrice: number
-    ): Comparison[] {
+    private getComparisons(price: number, previousPrice: number): Comparison[] {
         const comparisons: Comparison[] = [];
 
-        if (this._lastTweetPrice) {
-            this._addComparison(comparisons, {
-                intro: "Compared to the last tweet,",
-                change: getChange(price, this._lastTweetPrice),
+        if (this.lastTweetPrice) {
+            CryptoBot.addComparison(comparisons, {
+                intro: 'Compared to the last tweet,',
+                change: getChange(price, this.lastTweetPrice),
             });
         }
 
-        this._addComparison(comparisons, {
-            intro: "In the last 24 hours",
+        CryptoBot.addComparison(comparisons, {
+            intro: 'In the last 24 hours',
             change: getChange(price, previousPrice),
         });
 
         return comparisons;
     }
-
     public async tweet() {
-        const { price, previousPrice } =
-            await this._cryptoData.get24HrPriceData();
+        const { price, previousPrice } = await this.cryptoData.get24HrPriceData();
 
-        const comparisons = this._getComparisons(price, previousPrice);
+        const comparisons = this.getComparisons(price, previousPrice);
 
-        const message = this._messageGenerator.createMessage(
-            price,
-            comparisons
-        );
+        const message = this.messageGenerator.createMessage(price, comparisons);
 
-        this._twitterBot.tweet(message).then(({ data }: any) => {
-            this._lastTweetPrice = price;
-            console.log("Tweeted at", data.created_at);
+        this.twitterBot.tweet(message).then(({ data }: any) => {
+            this.lastTweetPrice = price;
+            console.log('Tweeted at', data.created_at);
         });
     }
 

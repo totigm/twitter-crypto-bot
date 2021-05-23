@@ -1,5 +1,5 @@
-import Twit from "twit";
-import { Credentials } from "../types";
+import Twit from 'twit';
+import { Credentials } from '../types';
 
 class TwitterBot {
     private client: Twit;
@@ -9,7 +9,7 @@ class TwitterBot {
     }
 
     public async tweet(status: string) {
-        return this.client.post("statuses/update", { status });
+        return this.client.post('statuses/update', { status });
     }
 }
 

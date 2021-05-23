@@ -1,12 +1,12 @@
-const dotenv = require("dotenv");
+import dotenv from 'dotenv';
 
-const NODE_ENV = process.env.NODE_ENV;
+const { NODE_ENV } = process.env;
 
 dotenv.config({
     path: `.env.${NODE_ENV}`,
 });
 
-const config = {
+const Config = {
     node_env: NODE_ENV,
     consumer_key: process.env.CONSUMER_KEY,
     consumer_secret: process.env.CONSUMER_SECRET,
@@ -15,4 +15,4 @@ const config = {
     server_url: process.env.SERVER_URL,
 };
 
-export { config };
+export default Config;

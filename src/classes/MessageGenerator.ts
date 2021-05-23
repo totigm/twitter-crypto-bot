@@ -1,60 +1,54 @@
-import { config } from "../config";
-import { Coin, Comparison, Decimals, MessageGeneratorParams } from "../types";
-import { formatDecimals } from "../utils";
+import Config from '../config';
+
+import { Coin, Comparison, Decimals, MessageGeneratorParams } from '../types';
+import { formatDecimals } from '../utils';
 
 class MessageGenerator {
     private coin: Coin;
     private decimals: Decimals;
 
-    constructor({
-        coin,
-        decimals = { min: 0, max: 8 },
-    }: MessageGeneratorParams) {
+    constructor({ coin, decimals = { min: 0, max: 8 } }: MessageGeneratorParams) {
         this.coin = coin;
         this.decimals = decimals;
     }
 
-    private _format(number, isPercentage = false) {
+    private format(number, isPercentage = false) {
         const absoluteNumber = Math.abs(number);
-        return formatDecimals(
-            absoluteNumber,
-            isPercentage ? 2 : this.decimals,
-            true
-        );
+        return formatDecimals(absoluteNumber, isPercentage ? 2 : this.decimals, true);
     }
 
-    private _createComparisonMessage({ intro, change }: Comparison) {
+    private createComparisonMessage({ intro, change }: Comparison) {
         const formatted = {
-            price: this._format(change.price),
-            percent: this._format(change.percent, true),
+            price: this.format(change.price),
+            percent: this.format(change.percent, true),
         };
-        return `${change.price > 0 ? "🟢" : "🔴"} ${intro} the price has ${
-            change.price > 0 ? "increased" : "dropped"
+        return `${change.price > 0 ? '🟢' : '🔴'} ${intro} the price has ${
+            change.price > 0 ? 'increased' : 'dropped'
         } by $${formatted.price} (${formatted.percent}%).\n`;
     }
 
-    private _getHashtags() {
+    private getHashtags() {
         return `#${this.coin.name} #${this.coin.symbol}`;
     }
 
-    private _getComparisonsMessages(comparisons: Comparison[]) {
-        let message = "";
-        comparisons.forEach(
-            (comparison) =>
-                (message += this._createComparisonMessage(comparison))
-        );
+    private getComparisonsMessages(comparisons: Comparison[]) {
+        let message = '';
+        comparisons.forEach((comparison) => {
+            message += this.createComparisonMessage(comparison);
+        });
         return message;
     }
 
     public createMessage(price: number, comparisons: Comparison[]): string {
-        const formattedPrice = this._format(price);
+        const formattedPrice = this.format(price);
 
         let message = `The $${this.coin.symbol} price is at $${formattedPrice} right now.\n`;
-        message += this._getComparisonsMessages(comparisons);
-        message += `\n${this._getHashtags()}`;
+        message += this.getComparisonsMessages(comparisons);
+        message += `\n${this.getHashtags()}`;
 
-        if (config.node_env === "dev")
+        if (Config.node_env === 'dev') {
             message = message.replaceAll(/\$|#/g, (symbol) => `[${symbol}]`);
+        }
 
         return message;
     }

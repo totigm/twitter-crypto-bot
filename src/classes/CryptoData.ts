@@ -1,6 +1,6 @@
-import axios from "axios";
-import { Decimals, PriceData, CryptoDataParams } from "../types";
-import { formatDecimals, formatObject } from "../utils";
+import axios from 'axios';
+import { Decimals, PriceData, CryptoDataParams } from '../types';
+import { formatDecimals, formatObject } from '../utils';
 
 export default class CryptoData {
     private symbol: string;
@@ -13,9 +13,7 @@ export default class CryptoData {
 
     public async get24HrPriceData(): Promise<PriceData> {
         const { lastPrice: price, prevClosePrice: previousPrice } = await axios
-            .get(
-                `https://api.binance.com/api/v3/ticker/24hr?symbol=${this.symbol}USDT`
-            )
+            .get(`https://api.binance.com/api/v3/ticker/24hr?symbol=${this.symbol}USDT`)
             .then((res) => res.data);
 
         const priceData = {
@@ -23,8 +21,6 @@ export default class CryptoData {
             previousPrice,
         };
 
-        return formatObject(priceData, (value) =>
-            Number(formatDecimals(value, this.decimals))
-        ) as PriceData;
+        return formatObject(priceData, (value) => Number(formatDecimals(value, this.decimals))) as PriceData;
     }
 }
