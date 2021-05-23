@@ -1,10 +1,16 @@
 import Config from '../config';
 
-import { Coin, Comparison, Decimals } from '../types';
+import { Coin, Comparison, Decimals, MessageGeneratorParams } from '../types';
 import { formatDecimals } from '../utils';
 
 class MessageGenerator {
-    constructor(private coin: Coin, private decimals: Decimals) {}
+    private coin: Coin;
+    private decimals: Decimals;
+
+    constructor({ coin, decimals = { min: 0, max: 8 } }: MessageGeneratorParams) {
+        this.coin = coin;
+        this.decimals = decimals;
+    }
 
     private format(number, isPercentage = false) {
         const absoluteNumber = Math.abs(number);
