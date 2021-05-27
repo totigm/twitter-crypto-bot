@@ -1,5 +1,16 @@
 import { Decimals } from '../types';
 
+const getCamelCase = (text: string): string =>
+    text
+        .match(/[a-zA-Z]+/g)
+        .map((word) => word[0].toUpperCase() + word.substr(1))
+        .join('');
+
+const formatType = (object: any, type: string, keys: string[]) =>
+    typeof object === type
+        ? keys.reduce((objects, key) => ({ ...objects, [key]: object }), {})
+        : object;
+
 const formatDecimals = (number: number, decimals: Decimals, useGrouping = false): string => {
     const newDecimals =
         typeof decimals === 'number'
@@ -29,4 +40,4 @@ const formatObject = (object: Object, callback: (value: any) => any): Object => 
     return obj;
 };
 
-export { formatDecimals, formatObject };
+export { formatDecimals, formatObject, formatType, getCamelCase };
