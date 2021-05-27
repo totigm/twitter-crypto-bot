@@ -1,3 +1,3 @@
-import CrpytoBot from './CryptoBot';
+import CryptoBot from './CryptoBot';
 
-export default CrpytoBot;
+export default CryptoBot;
