@@ -1,27 +1,27 @@
 import { Credentials } from './credentials';
 
 export interface ParamsOptions {
-    credentials?: Credentials;
+    credentials?: Partial<Credentials>;
     decimalsAmount?: number;
-    hasHashtags?: boolean | HasHashtags;
-    hasComparisons?: boolean | HasComparisons;
+    hasHashtags?: boolean | Partial<HasHashtags>;
+    hasComparisons?: boolean | Partial<HasComparisons>;
 }
 
 export interface Options {
-    credentials?: Credentials;
-    decimalsAmount?: Decimals;
-    hasHashtags?: HasHashtags;
-    hasComparisons?: HasComparisons;
+    credentials: Credentials;
+    decimalsAmount: Decimals;
+    hasHashtags: HasHashtags;
+    hasComparisons: HasComparisons;
 }
 
 export interface HasHashtags {
-    symbol?: boolean;
-    name?: boolean;
+    symbol: boolean;
+    name: boolean;
 }
 
 export interface HasComparisons {
-    lastTweet?: boolean;
-    lastDay?: boolean;
+    lastTweet: boolean;
+    lastDay: boolean;
 }
 
 export interface Decimals {
