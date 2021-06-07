@@ -8,10 +8,8 @@
     "extends": ["airbnb-typescript", "prettier"],
     "rules": {
         "no-console": "off",
-        "@typescript-eslint/comma-dangle": "off",
-        "lines-between-class-members": "off",
         "@typescript-eslint/lines-between-class-members": "off",
-        "max-len": ["warn", { "code": 120 }],
+        "@typescript-eslint/no-unused-expressions": ["warn", { "allowTernary": true }],
         "@typescript-eslint/quotes": ["error", "single"],
         "@typescript-eslint/naming-convention": [
             "error",
@@ -22,8 +20,7 @@
             {
                 "selector": ["variable"],
                 "modifiers": ["const"],
-                "format": ["camelCase", "PascalCase", "UPPER_CASE"],
-                "leadingUnderscore": "allow"
+                "format": ["camelCase", "PascalCase", "UPPER_CASE"]
             },
             {
                 "selector": ["function"],

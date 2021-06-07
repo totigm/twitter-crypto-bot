@@ -1,20 +1,23 @@
-import Config from '../config';
-
-import { Coin, Comparison, Decimals, MessageGeneratorParams } from '../types';
+import config from '../config';
+import { Coin, Comparison, Options } from '../types';
 import { formatDecimals } from '../utils';
 
-class MessageGenerator {
+export default class MessageGenerator {
     private coin: Coin;
-    private decimals: Decimals;
+    private options: Options;
 
-    constructor({ coin, decimals = { min: 0, max: 8 } }: MessageGeneratorParams) {
+    constructor(coin: Coin, options: Options) {
         this.coin = coin;
-        this.decimals = decimals;
+        this.options = options;
     }
 
     private format(number, isPercentage = false) {
         const absoluteNumber = Math.abs(number);
-        return formatDecimals(absoluteNumber, isPercentage ? 2 : this.decimals, true);
+        return formatDecimals(
+            absoluteNumber,
+            isPercentage ? { max: 2, min: 2 } : this.options.decimalsAmount,
+            true,
+        );
     }
 
     private createComparisonMessage({ intro, change }: Comparison) {
@@ -28,7 +31,13 @@ class MessageGenerator {
     }
 
     private getHashtags() {
-        return `#${this.coin.name} #${this.coin.symbol}`;
+        const { name, symbol } = this.coin;
+        const { hasHashtags } = this.options;
+
+        let hashtags = '';
+        if (hasHashtags.symbol) hashtags += `#${symbol} `;
+        if (hasHashtags.name && name && name !== symbol) hashtags += `#${name}`;
+        return hashtags;
     }
 
     private getComparisonsMessages(comparisons: Comparison[]) {
@@ -43,15 +52,14 @@ class MessageGenerator {
         const formattedPrice = this.format(price);
 
         let message = `The $${this.coin.symbol} price is at $${formattedPrice} right now.\n`;
-        message += this.getComparisonsMessages(comparisons);
-        message += `\n${this.getHashtags()}`;
 
-        if (Config.node_env === 'dev') {
+        message += this.getComparisonsMessages(comparisons);
+
+        if (this.options.hasHashtags) message += `\n${this.getHashtags()}`;
+
+        if (config.node_env === 'dev')
             message = message.replaceAll(/\$|#/g, (symbol) => `[${symbol}]`);
-        }
 
         return message;
     }
 }
-
-export default MessageGenerator;
