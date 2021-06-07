@@ -12,7 +12,7 @@ export default class CryptoBot {
     private messageGenerator: MessageGenerator;
     private comparisonGenerator: ComparisonsGenerator;
 
-    constructor(symbol: Symbol, botOptions?: ParamsOptions) {
+    constructor(symbol: Symbol, botOptions: ParamsOptions = {}) {
         const coin: Coin = {
             symbol,
             name: getCamelCase(Currencies[symbol]) as Name,
