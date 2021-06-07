@@ -6,7 +6,7 @@ import { minutesToMs, getCamelCase, timeToMs } from '../utils';
 import ComparisonsGenerator from './ComparisonsGenerator';
 import OptionsFormatter from './OptionsFormatter';
 
-class CryptoBot {
+export default class CryptoBot {
     private twitterBot: TwitterBot;
     private cryptoData: CryptoData;
     private messageGenerator: MessageGenerator;
@@ -54,5 +54,3 @@ class CryptoBot {
         }, ms);
     }
 }
-
-export default CryptoBot;

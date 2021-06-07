@@ -2,7 +2,7 @@ import config from '../config';
 import { Coin, Comparison, Options } from '../types';
 import { formatDecimals } from '../utils';
 
-class MessageGenerator {
+export default class MessageGenerator {
     private coin: Coin;
     private options: Options;
 
@@ -63,5 +63,3 @@ class MessageGenerator {
         return message;
     }
 }
-
-export default MessageGenerator;

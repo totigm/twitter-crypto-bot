@@ -6,38 +6,47 @@ const getCamelCase = (text: string): string =>
         .map((word) => word[0].toUpperCase() + word.substr(1))
         .join('');
 
+/* 
+Every element that matches the given type will be updated to an object with
+the keys from the array provided, with that same value in every property.
+E.g. formatType({ example: true }, "boolean", ["formatted", "worked"]) will return
+{
+    example: {
+        formatted: true,
+        worked: true
+    }
+}
+*/
 const formatType = (object: any, type: string, keys: string[]) =>
     typeof object === type
         ? keys.reduce((objects, key) => ({ ...objects, [key]: object }), {})
         : object;
 
-const formatDecimals = (number: number, decimals: Decimals, useGrouping = false): string => {
-    const newDecimals =
-        typeof decimals === 'number'
-            ? {
-                  min: decimals,
-                  max: decimals,
-              }
-            : decimals;
-
+const formatDecimals = (number: number, { min, max }: Decimals, useGrouping = false): string => {
     const options = {
-        minimumFractionDigits: newDecimals.min,
-        maximumFractionDigits: newDecimals.max,
+        minimumFractionDigits: min,
+        maximumFractionDigits: max,
         useGrouping,
     };
 
     return new Intl.NumberFormat('en-US', options).format(number);
 };
 
-const formatObject = (object: Object, callback: (value: any) => any): Object => {
-    const obj = {};
-
-    Object.entries(object).forEach(([key, value]) => {
-        if (typeof value !== 'object') obj[key] = callback(value);
-        else obj[key] = formatObject(object[key], callback);
-    });
-
-    return obj;
-};
+// Applies the callback function to every element that is not an object, no matter how nested it is.
+const formatObject = (
+    object: Object,
+    callback: (value: any, keys?: string[]) => any,
+    parentKeys: string[] = [],
+): Object =>
+    Object.entries(object).reduce((obj, [key, value]) => {
+        const keys = [...parentKeys, key];
+        return {
+            ...obj,
+            [key]:
+                typeof value !== 'object'
+                    ? callback(value, keys)
+                    : formatObject(object[key], callback, keys),
+        };
+    }, {});
 
 export { formatDecimals, formatObject, formatType, getCamelCase };

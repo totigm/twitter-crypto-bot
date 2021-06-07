@@ -1,7 +1,7 @@
 import { Comparison, HasComparisons } from '../types';
 import { getChange } from '../utils';
 
-class ComparisonsGenerator {
+export default class ComparisonsGenerator {
     private lastTweetPrice: number;
 
     constructor(private hasComparisons: HasComparisons) {}
@@ -35,5 +35,3 @@ class ComparisonsGenerator {
         this.lastTweetPrice = price;
     }
 }
-
-export default ComparisonsGenerator;
