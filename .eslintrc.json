@@ -1,0 +1,43 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
+    "plugins": ["@typescript-eslint"],
+    "extends": ["airbnb-typescript", "prettier"],
+    "rules": {
+        "no-console": "off",
+        "@typescript-eslint/lines-between-class-members": "off",
+        "@typescript-eslint/no-unused-expressions": ["warn", { "allowTernary": true }],
+        "@typescript-eslint/quotes": ["error", "single"],
+        "@typescript-eslint/naming-convention": [
+            "error",
+            {
+                "selector": ["variable"],
+                "format": ["camelCase"]
+            },
+            {
+                "selector": ["variable"],
+                "modifiers": ["const"],
+                "format": ["camelCase", "PascalCase", "UPPER_CASE"]
+            },
+            {
+                "selector": ["function"],
+                "format": ["camelCase", "PascalCase"]
+            },
+            {
+                "selector": ["typeLike"],
+                "format": ["PascalCase"]
+            }
+        ]
+    },
+    "overrides": [
+        {
+            "files": ["./src/utils/*.ts"],
+            "rules": {
+                "import/prefer-default-export": "off"
+            }
+        }
+    ]
+}
