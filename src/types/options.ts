@@ -28,3 +28,8 @@ export interface Decimals {
     min: number;
     max: number;
 }
+
+export interface MessageOptions {
+    hasHashtags: HasHashtags;
+    decimalsAmount: Decimals;
+}

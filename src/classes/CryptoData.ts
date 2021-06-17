@@ -11,7 +11,7 @@ export default class CryptoData {
             .then((res) => res.data)
             .catch((error) => console.error(error));
 
-        const priceData = {
+        const priceData: PriceData = {
             price,
             previousPrice,
         };

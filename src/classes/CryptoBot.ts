@@ -26,7 +26,10 @@ export default class CryptoBot {
 
         this.comparisonGenerator = new ComparisonsGenerator(options.hasComparisons);
 
-        this.messageGenerator = new MessageGenerator(coin, options);
+        this.messageGenerator = new MessageGenerator(coin, {
+            decimalsAmount: options.decimalsAmount,
+            hasHashtags: options.hasHashtags,
+        });
     }
 
     public async tweet() {
@@ -45,12 +48,10 @@ export default class CryptoBot {
             .catch((error) => console.error(error));
     }
 
-    public scheduleTweets(time: number | Time) {
+    public setTweetInterval(time: number | Time) {
         this.tweet();
 
         const ms = typeof time === 'number' ? minutesToMs(time) : timeToMs(time);
-        setInterval(() => {
-            this.tweet();
-        }, ms);
+        setInterval(() => this.tweet(), ms);
     }
 }

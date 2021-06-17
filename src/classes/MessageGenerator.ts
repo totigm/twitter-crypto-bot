@@ -1,15 +1,9 @@
 import config from '../config';
-import { Coin, Comparison, Options } from '../types';
+import { Coin, Comparison, MessageOptions } from '../types';
 import { formatDecimals } from '../utils';
 
 export default class MessageGenerator {
-    private coin: Coin;
-    private options: Options;
-
-    constructor(coin: Coin, options: Options) {
-        this.coin = coin;
-        this.options = options;
-    }
+    constructor(private coin: Coin, private options: MessageOptions) {}
 
     private format(number, isPercentage = false) {
         const absoluteNumber = Math.abs(number);
@@ -36,7 +30,7 @@ export default class MessageGenerator {
 
         let hashtags = '';
         if (hasHashtags.symbol) hashtags += `#${symbol} `;
-        if (hasHashtags.name && name && name !== symbol) hashtags += `#${name}`;
+        if (hasHashtags.name && name !== symbol) hashtags += `#${name}`;
         return hashtags;
     }
 
@@ -55,7 +49,7 @@ export default class MessageGenerator {
 
         message += this.getComparisonsMessages(comparisons);
 
-        if (this.options.hasHashtags) message += `\n${this.getHashtags()}`;
+        message += `\n${this.getHashtags()}`;
 
         if (config.node_env === 'dev')
             message = message.replaceAll(/\$|#/g, (symbol) => `[${symbol}]`);

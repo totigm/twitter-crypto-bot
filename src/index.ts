@@ -1,3 +1,3 @@
 import CryptoBot from './classes';
 
-new CryptoBot('BNB').scheduleTweets(15);
+new CryptoBot('BTC').setTweetInterval(15);
