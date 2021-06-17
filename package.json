@@ -5,8 +5,10 @@
     "main": "build/index.js",
     "scripts": {
         "start": "npm run dev",
-        "dev": "nodemon src/index.ts",
-        "prod": "set NODE_ENV=prod && tsc && node ./build/index.js",
+        "build": "tsc",
+        "dev": "nodemon",
+        "preprod": "npm run build",
+        "prod": "node ./build/index.js",
         "lint": "eslint src && prettier --check src",
         "lint:fix": "eslint src --fix && prettier --write src"
     },
