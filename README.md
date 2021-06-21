@@ -1,4 +1,4 @@
-# Twitter CryptoBot
+# Twitter Crypto Bot
 
 This bot tweets about the price variations of any cryptocurrency every certain time interval.
 
@@ -24,7 +24,7 @@ You can achieve this with just one line of code! Simply choose a coin, a time in
 
 ## 🎉 Let's start!
 
--   First of all, go to the [Twitter keys generator](https://github.com/totigm/twitter-keys-generator) and generate the necessary consumer keys and access tokens for this bot.
+-   First of all, go to the [Twitter tokens generator](https://github.com/totigm/twitter-tokens-generator) and generate the necessary access tokens for this bot.
     -   You can skip this step if you already have them.
 -   Fork this repository. If you don't know how forking works, check out [this guide](https://guides.github.com/activities/forking)
 -   Now that you have your own fork of the project, clone your repository to your computer.
@@ -142,7 +142,6 @@ Your bot can be customized if you want it to have a different behaviour. The opt
         </div>
     </tbody>
 </table>
-
 
 <hr/>
 
