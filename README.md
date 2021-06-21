@@ -163,6 +163,12 @@ When you saw the first example, you might have noticed that the tweet interval w
 
 If you like what we do and want to encourage us to continue creating stuff, starring and sharing this project would be really appreciated!
 
+## ✨ Contributing
+
+Contributions are more than welcome!
+
+We think that you might have great ideas to make this project better, so if you do, please create a pull request and/or issue.
+
 ## 😃 Authors
 
 -   [Totigm](https://github.com/totigm)
