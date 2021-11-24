@@ -149,38 +149,40 @@ Your bot can be customized if you want it to have a different behaviour. The opt
             <tr>
                 <td>interval</td>
                 <td>
-                    Time interval for each candle.
-                    - m: Minutes
-                    - h: Hours
-                    - d: Days
-                    - w: Weeks
-                    - M: Months
+                    Time interval for each candle.  
+                    <ul>
+                        <li>m: Minutes</li>
+                        <li>h: Hours</li>
+                        <li>d: Days</li>
+                        <li>w: Weeks</li>
+                        <li>M: Months</li>
+                    </ul>
                 </td>
                 <td>1m</td>
                 <td>
-
-- 1m
-- 3m
-- 5m
-- 15m
-- 30m
-- 1h
-- 2h
-- 4h
-- 6h
-- 8h
-- 12h
-- 1d
-- 3d
-- 1w
-- 1M
-
-</td>
+                    <ul>
+                        <li>1m</li>
+                        <li>3m</li>
+                        <li>5m</li>
+                        <li>15m</li>
+                        <li>30m</li>
+                        <li>1h</li>
+                        <li>2h</li>
+                        <li>4h</li>
+                        <li>6h</li>
+                        <li>8h</li>
+                        <li>12h</li>
+                        <li>1d</li>
+                        <li>3d</li>
+                        <li>1w</li>
+                        <li>1M</li>
+                    </ul>
+                </td>
             </tr>
             <tr>
                 <td>limit</td>
                 <td>
-                    Amount 
+                    Amount of candles in the chart
                 </td>
                 <td>16</td>
                 <td>Integer lower than 1000</td>
