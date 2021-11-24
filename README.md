@@ -148,6 +148,7 @@ Your bot can be customized if you want it to have a different behaviour. The opt
 When you saw the first example, you might have noticed that the tweet interval was set in minutes. If you want to set the interval to certain amount of hours, minutes, and/or seconds, you can use a time object to explicitly set them.
 
 ![Set tweet interval options](https://user-images.githubusercontent.com/64804554/143302414-c0bc4aaa-a003-4689-90a7-e31ba2778ede.png)
+![Set tweet interval options](https://user-images.githubusercontent.com/68404335/143306008-907e046a-a682-4b90-83b0-dc6428e3a031.png)
 
 | Option      | Description                              | Value Type      |
 | ----------- | ---------------------------------------- | --------------- |
