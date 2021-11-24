@@ -29,12 +29,15 @@ export default class CryptoData {
         }
     }
 
-    public async getImageUrl(): Promise<string> {
+    public async getImageUrl(lastPrice?: number): Promise<string> {
         try {
+            let query = `symbol=${this.code}USDT&interval=${this.chartOptions.interval}&limit=${this.chartOptions.limit}`;
+            if (lastPrice) {
+                query += `&lastPrice=${lastPrice}`;
+            }
+
             const { chartImage } = await axios
-                .get(
-                    `http://localhost:3000/chart/binance?symbol=${this.code}USDT&interval=${this.chartOptions.interval}&limit=${this.chartOptions.limit}`,
-                )
+                .get(`http://localhost:3000/chart/binance?${query}`)
                 .then((res) => res.data);
             return chartImage as string;
         } catch (error) {

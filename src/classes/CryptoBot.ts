@@ -37,7 +37,8 @@ export default class CryptoBot {
     public async tweet() {
         const { price, previousPrice } = await this.cryptoData.get24HrPriceData();
 
-        const chartImage = await this.cryptoData.getImageUrl();
+        const lastPrice = this.comparisonGenerator.getLastTweetPrice();
+        const chartImage = await this.cryptoData.getImageUrl(lastPrice);
 
         const comparisons = this.comparisonGenerator.getComparisons(price, previousPrice);
 
