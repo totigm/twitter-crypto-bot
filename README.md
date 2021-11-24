@@ -115,7 +115,7 @@ Your bot can be customized if you want it to have a different behaviour. The opt
                 <td>Boolean</td>
             </tr>
         </div>
-        <div id="hasComparisons">
+        <div id="chartOptions">
             <tr>
                 <td rowspan="3">
                     <b>hasComparisons</b>
@@ -138,6 +138,52 @@ Your bot can be customized if you want it to have a different behaviour. The opt
                 </td>
                 <td>true</td>
                 <td>Boolean</td>
+            </tr>
+        </div>
+                <div id="hasComparisons">
+            <tr>
+                <td rowspan="3">
+                    <b>chartOptions</b>
+                </td>
+            </tr>
+            <tr>
+                <td>interval</td>
+                <td>
+                    Time interval for each candle.
+                    - m: Minutes
+                    - h: Hours
+                    - d: Days
+                    - w: Weeks
+                    - M: Months
+                </td>
+                <td>1m</td>
+                <td>
+
+- 1m
+- 3m
+- 5m
+- 15m
+- 30m
+- 1h
+- 2h
+- 4h
+- 6h
+- 8h
+- 12h
+- 1d
+- 3d
+- 1w
+- 1M
+
+</td>
+            </tr>
+            <tr>
+                <td>limit</td>
+                <td>
+                    Amount 
+                </td>
+                <td>16</td>
+                <td>Integer lower than 1000</td>
             </tr>
         </div>
     </tbody>
