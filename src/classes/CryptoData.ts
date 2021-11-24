@@ -6,18 +6,33 @@ export default class CryptoData {
     constructor(private code: Code, private decimals: Decimals = { min: 0, max: 8 }) {}
 
     public async get24HrPriceData(): Promise<PriceData> {
-        const { lastPrice: price, prevClosePrice: previousPrice } = await axios
-            .get(`https://api.binance.com/api/v3/ticker/24hr?symbol=${this.code}USDT`)
-            .then((res) => res.data)
-            .catch((error) => console.error(error));
+        try {
+            const { lastPrice: price, prevClosePrice: previousPrice } = await axios
+                .get(`https://api.binance.com/api/v3/ticker/24hr?symbol=${this.code}USDT`)
+                .then((res) => res.data)
+                .catch((error) => console.error(error));
 
-        const priceData: PriceData = {
-            price,
-            previousPrice,
-        };
+            const priceData: PriceData = {
+                price,
+                previousPrice,
+            };
 
-        return formatObject(priceData, (value) =>
-            Number(formatDecimals(value, this.decimals)),
-        ) as PriceData;
+            return formatObject(priceData, (value) =>
+                Number(formatDecimals(value, this.decimals)),
+            ) as PriceData;
+        } catch (error) {
+            throw new Error();
+        }
+    }
+
+    public async getImageUrl(): Promise<string> {
+        try {
+            const { chartImage } = await axios
+                .get(`http://localhost:3000/chart/binance?symbol=${this.code}USDT`)
+                .then((res) => res.data);
+            return chartImage as string;
+        } catch (error) {
+            return '';
+        }
     }
 }
