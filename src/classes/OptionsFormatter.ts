@@ -20,6 +20,10 @@ export default class OptionsFormatter {
             lastDay: true,
             lastTweet: true,
         },
+        chartOptions: {
+            interval: '1m',
+            limit: 16,
+        },
     };
 
     private static paramsOptionsFormat = {
