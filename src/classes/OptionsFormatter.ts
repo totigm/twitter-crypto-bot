@@ -14,7 +14,7 @@ export default class OptionsFormatter {
         decimalsAmount: { min: 0, max: 8 },
         hasHashtags: {
             name: true,
-            symbol: true,
+            code: true,
         },
         hasComparisons: {
             lastDay: true,

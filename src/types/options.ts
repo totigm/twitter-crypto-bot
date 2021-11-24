@@ -15,7 +15,7 @@ export interface Options {
 }
 
 export interface HasHashtags {
-    symbol: boolean;
+    code: boolean;
     name: boolean;
 }
 

@@ -1,10 +1,11 @@
 import CryptoData from './CryptoData';
 import MessageGenerator from './MessageGenerator';
 import TwitterBot from './TwitterBot';
-import { Coin, ParamsOptions, Currencies, Symbol, Name, Time } from '../types';
-import { minutesToMs, getCamelCase, timeToMs } from '../utils';
+import { Coin, ParamsOptions, Code, Name, Time } from '../types';
+import { minutesToMs, timeToMs } from '../utils';
 import ComparisonsGenerator from './ComparisonsGenerator';
 import OptionsFormatter from './OptionsFormatter';
+import { getCoin } from '../utils/coins';
 
 export default class CryptoBot {
     private twitterBot: TwitterBot;
@@ -12,21 +13,18 @@ export default class CryptoBot {
     private messageGenerator: MessageGenerator;
     private comparisonGenerator: ComparisonsGenerator;
 
-    constructor(symbol: Symbol, botOptions: ParamsOptions = {}) {
-        const coin: Coin = {
-            symbol,
-            name: getCamelCase(Currencies[symbol]) as Name,
-        };
+    constructor(coin: Name | Code, botOptions: ParamsOptions = {}) {
+        const formattedCoin: Coin = getCoin(coin);
 
         const options = OptionsFormatter.getOptions(botOptions);
 
         this.twitterBot = new TwitterBot(options.credentials);
 
-        this.cryptoData = new CryptoData(coin.symbol, options.decimalsAmount);
+        this.cryptoData = new CryptoData(formattedCoin.code, options.decimalsAmount);
 
         this.comparisonGenerator = new ComparisonsGenerator(options.hasComparisons);
 
-        this.messageGenerator = new MessageGenerator(coin, {
+        this.messageGenerator = new MessageGenerator(formattedCoin, {
             decimalsAmount: options.decimalsAmount,
             hasHashtags: options.hasHashtags,
         });
