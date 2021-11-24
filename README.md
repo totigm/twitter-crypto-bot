@@ -101,8 +101,8 @@ Your bot can be customized if you want it to have a different behaviour. The opt
                 </td>
             </tr>
             <tr>
-                <td>symbol</td>
-                <td>If the tweet should contain the coin symbol as a hashtag or not. E.g. #BTC.</td>
+                <td>code</td>
+                <td>If the tweet should contain the coin code as a hashtag or not. E.g. #BTC.</td>
                 <td>true</td>
                 <td>Boolean</td>
             </tr>

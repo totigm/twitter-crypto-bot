@@ -1,6 +1,6 @@
 import config from '../config';
 import { Coin, Comparison, MessageOptions } from '../types';
-import { formatDecimals } from '../utils';
+import { formatDecimals, getCamelCase } from '../utils';
 
 export default class MessageGenerator {
     constructor(private coin: Coin, private options: MessageOptions) {}
@@ -25,12 +25,12 @@ export default class MessageGenerator {
     }
 
     private getHashtags() {
-        const { name, symbol } = this.coin;
+        const { name, code } = this.coin;
         const { hasHashtags } = this.options;
 
         let hashtags = '';
-        if (hasHashtags.symbol) hashtags += `#${symbol} `;
-        if (hasHashtags.name && name !== symbol) hashtags += `#${name}`;
+        if (hasHashtags.name) hashtags += `#${getCamelCase(name)}`;
+        if (hasHashtags.code && code !== name) hashtags += ` #${code}`;
         return hashtags;
     }
 
@@ -45,14 +45,13 @@ export default class MessageGenerator {
     public createMessage(price: number, comparisons: Comparison[]): string {
         const formattedPrice = this.format(price);
 
-        let message = `The $${this.coin.symbol} price is at $${formattedPrice} right now.\n`;
+        let message = `The $${this.coin.code} price is at $${formattedPrice} right now.\n`;
 
         message += this.getComparisonsMessages(comparisons);
 
         message += `\n${this.getHashtags()}`;
 
-        if (config.node_env === 'dev')
-            message = message.replaceAll(/\$|#/g, (symbol) => `[${symbol}]`);
+        if (config.node_env === 'dev') message = message.replace(/\$|#/g, (code) => `[${code}]`);
 
         return message;
     }
