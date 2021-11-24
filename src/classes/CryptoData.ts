@@ -1,9 +1,13 @@
 import axios from 'axios';
-import { Decimals, PriceData, Code } from '../types';
+import { Decimals, PriceData, Code, ChartOptions } from '../types';
 import { formatDecimals, formatObject } from '../utils';
 
 export default class CryptoData {
-    constructor(private code: Code, private decimals: Decimals = { min: 0, max: 8 }) {}
+    constructor(
+        private code: Code,
+        private decimals: Decimals,
+        private chartOptions: ChartOptions,
+    ) {}
 
     public async get24HrPriceData(): Promise<PriceData> {
         try {
@@ -28,7 +32,9 @@ export default class CryptoData {
     public async getImageUrl(): Promise<string> {
         try {
             const { chartImage } = await axios
-                .get(`http://localhost:3000/chart/binance?symbol=${this.code}USDT`)
+                .get(
+                    `http://localhost:3000/chart/binance?symbol=${this.code}USDT&interval=${this.chartOptions.interval}&limit=${this.chartOptions.limit}`,
+                )
                 .then((res) => res.data);
             return chartImage as string;
         } catch (error) {

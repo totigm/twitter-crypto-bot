@@ -20,7 +20,11 @@ export default class CryptoBot {
 
         this.twitterBot = new TwitterBot(options.credentials);
 
-        this.cryptoData = new CryptoData(formattedCoin.code, options.decimalsAmount);
+        this.cryptoData = new CryptoData(
+            formattedCoin.code,
+            options.decimalsAmount,
+            options.chartOptions,
+        );
 
         this.comparisonGenerator = new ComparisonsGenerator(options.hasComparisons);
 
