@@ -34,7 +34,7 @@
     },
     "overrides": [
         {
-            "files": ["./src/utils/*.ts"],
+            "files": ["./src/utils/*.ts", "./src/types/*.ts", "./src/types/**/*.ts"],
             "rules": {
                 "import/prefer-default-export": "off"
             }
