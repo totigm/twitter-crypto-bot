@@ -185,7 +185,7 @@ Your bot can be customized if you want it to have a different behaviour. The opt
                     Amount of candles in the chart
                 </td>
                 <td>16</td>
-                <td>Integer lower than 1000</td>
+                <td>Integer. Maximum 1000</td>
             </tr>
         </div>
     </tbody>
