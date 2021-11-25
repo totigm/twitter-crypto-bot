@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { Decimals, PriceData, Code, ChartOptions } from '../types';
 import { formatDecimals, formatObject } from '../utils';
+import config from '../config';
 
 export default class CryptoData {
     constructor(
@@ -12,7 +13,7 @@ export default class CryptoData {
     public async get24HrPriceData(): Promise<PriceData> {
         try {
             const { lastPrice: price, prevClosePrice: previousPrice } = await axios
-                .get(`https://api.binance.com/api/v3/ticker/24hr?symbol=${this.code}USDT`)
+                .get(`${config.binance_api}/ticker/24hr?symbol=${this.code}USDT`)
                 .then((res) => res.data)
                 .catch((error) => console.error(error));
 
@@ -37,7 +38,7 @@ export default class CryptoData {
             }
 
             const { chartImage } = await axios
-                .get(`http://localhost:3000/chart/binance?${query}`)
+                .get(`${config.charts_api}/chart/binance?${query}`)
                 .then((res) => res.data);
             return chartImage as string;
         } catch (error) {
