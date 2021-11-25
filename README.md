@@ -39,7 +39,7 @@ You can achieve this with just one line of code! Simply choose a coin, a time in
 
 Your bot can be customized if you want it to have a different behaviour. The options that it supports right now are:
 
-![Crypto bot options](https://user-images.githubusercontent.com/68404335/143305475-f79f4218-e51f-47e3-8edd-1799b279bbca.png)
+![Crypto bot options](https://user-images.githubusercontent.com/64804554/143328560-cee24984-44fd-4f8f-b624-2e608f4fbe97.png)
 
 <table>
     <thead>
