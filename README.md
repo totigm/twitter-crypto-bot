@@ -115,7 +115,7 @@ Your bot can be customized if you want it to have a different behaviour. The opt
                 <td>Boolean</td>
             </tr>
         </div>
-        <div id="chartOptions">
+        <div id="hasComparisons">
             <tr>
                 <td rowspan="3">
                     <b>hasComparisons</b>
@@ -140,7 +140,7 @@ Your bot can be customized if you want it to have a different behaviour. The opt
                 <td>Boolean</td>
             </tr>
         </div>
-                <div id="hasComparisons">
+        <div id="chartOptions">
             <tr>
                 <td rowspan="3">
                     <b>chartOptions</b>
