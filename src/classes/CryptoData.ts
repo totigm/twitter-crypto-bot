@@ -42,7 +42,7 @@ export default class CryptoData {
 
         const { chartImage } = await axios({
             method: 'GET',
-            url: `${config.charts_api}/chart/binance`,
+            url: `${config.charts_api}/binance`,
             headers: {
                 'x-rapidapi-key': config.rapidapi_key,
             },
