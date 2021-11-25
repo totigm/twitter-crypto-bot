@@ -11,38 +11,46 @@ export default class CryptoData {
     ) {}
 
     public async get24HrPriceData(): Promise<PriceData> {
-        try {
-            const { lastPrice: price, prevClosePrice: previousPrice } = await axios
-                .get(`${config.binance_api}/ticker/24hr?symbol=${this.code}USDT`)
-                .then((res) => res.data)
-                .catch((error) => console.error(error));
+        const params = {
+            symbol: `${this.code}USDT`,
+        };
 
-            const priceData: PriceData = {
-                price,
-                previousPrice,
-            };
+        const { lastPrice: price, prevClosePrice: previousPrice } = await axios({
+            method: 'GET',
+            url: `${config.binance_api}/ticker/24hr`,
+            params,
+        })
+            .then((res) => res.data)
+            .catch((error) => console.error(error));
 
-            return formatObject(priceData, (value) =>
-                Number(formatDecimals(value, this.decimals)),
-            ) as PriceData;
-        } catch (error) {
-            throw new Error();
-        }
+        const priceData: PriceData = {
+            price,
+            previousPrice,
+        };
+
+        return formatObject(priceData, (value) =>
+            Number(formatDecimals(value, this.decimals)),
+        ) as PriceData;
     }
 
     public async getImageUrl(lastPrice?: number): Promise<string> {
-        try {
-            let query = `symbol=${this.code}USDT&interval=${this.chartOptions.interval}&limit=${this.chartOptions.limit}`;
-            if (lastPrice) {
-                query += `&lastPrice=${lastPrice}`;
-            }
+        const params = {
+            lastPrice,
+            symbol: this.code,
+            ...this.chartOptions,
+        };
 
-            const { chartImage } = await axios
-                .get(`${config.charts_api}/chart/binance?${query}`)
-                .then((res) => res.data);
-            return chartImage as string;
-        } catch (error) {
-            return '';
-        }
+        const { chartImage } = await axios({
+            method: 'GET',
+            url: `${config.charts_api}/chart/binance`,
+            headers: {
+                'x-rapidapi-key': config.rapidapi_key,
+            },
+            params,
+        })
+            .then((res) => res.data)
+            .catch(() => '');
+
+        return chartImage as string;
     }
 }
