@@ -206,7 +206,7 @@ When you saw the first example, you might have noticed that the tweet interval w
 | **minutes** | Time interval in minutes between tweets. | Positive number |
 | **seconds** | Time interval in seconds between tweets. | Positive number |
 
-> As shown in the [first example](#twitter-cryptobot) you can also use just a number instead of an object and it will be considered as minutes.
+> As shown in the [first example](#twitter-crypto-bot) you can also use just a number instead of an object and it will be considered as minutes.
 >
 > E.g. `bot.setTweetInterval(15)` is the same as `bot.setTweetInterval({ minutes: 15 })`
 
