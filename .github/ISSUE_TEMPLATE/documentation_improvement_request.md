@@ -1,5 +1,5 @@
 ---
-name: "\U0001F4DD Documentation improvement"
+name: "\U0001F4DD Documentation improvement request"
 about: Create a report to help us improve the documentation
 title: "📝 "
 labels: documentation
