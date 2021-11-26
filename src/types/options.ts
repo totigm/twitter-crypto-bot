@@ -5,6 +5,7 @@ export interface ParamsOptions {
     decimalsAmount?: number;
     hasHashtags?: boolean | Partial<HasHashtags>;
     hasComparisons?: boolean | Partial<HasComparisons>;
+    chartOptions?: Partial<ChartOptions>;
 }
 
 export interface Options {
@@ -12,6 +13,7 @@ export interface Options {
     decimalsAmount: Decimals;
     hasHashtags: HasHashtags;
     hasComparisons: HasComparisons;
+    chartOptions: ChartOptions;
 }
 
 export interface HasHashtags {
@@ -24,12 +26,34 @@ export interface HasComparisons {
     lastDay: boolean;
 }
 
+export interface MessageOptions {
+    hasHashtags: HasHashtags;
+    decimalsAmount: Decimals;
+}
+
 export interface Decimals {
     min: number;
     max: number;
 }
 
-export interface MessageOptions {
-    hasHashtags: HasHashtags;
-    decimalsAmount: Decimals;
+type Interval =
+    | '1m'
+    | '3m'
+    | '5m'
+    | '15m'
+    | '30m'
+    | '1h'
+    | '2h'
+    | '4h'
+    | '6h'
+    | '8h'
+    | '12h'
+    | '1d'
+    | '3d'
+    | '1w'
+    | '1M';
+
+export interface ChartOptions {
+    interval: Interval;
+    limit: number;
 }

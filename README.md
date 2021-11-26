@@ -21,14 +21,17 @@ You can achieve this with just one line of code! Simply choose a coin, a time in
 -   [**Twitter account**](https://twitter.com): This is just a normal Twitter account. You can create one [here](https://twitter.com/i/flow/signup).
 
 -   [**Twitter developer account**](https://developer.twitter.com): Log in with your Twitter account and apply for a developer one [here](https://developer.twitter.com/en/apply-for-access).
+-   [**RapidAPI account**](https://rapidapi.com): If you don't have one already, you can create one [here](https://rapidapi.com/auth/sign-up).
 
 ## 🎉 Let's start!
 
--   First of all, go to the [Twitter tokens generator](https://github.com/totigm/twitter-tokens-generator) and generate the necessary access tokens for this bot.
-    -   You can skip this step if you already have them.
--   Fork this repository. If you don't know how forking works, check out [this guide](https://guides.github.com/activities/forking)
+-   First of all, fork this repository. If you don't know how forking works, check out [this guide](https://guides.github.com/activities/forking).
 -   Now that you have your own fork of the project, clone your repository to your computer.
--   Create a file named `.env` at the repo's root directory and paste the keys from the first step in it (It should look like [`.env.example`](.env.example)).
+-   Go to the [Twitter tokens generator](https://github.com/totigm/twitter-tokens-generator) and generate the necessary access tokens for this bot.
+    -   You can skip this step if you already have them.
+-   Go to the [Candlestick Chart API](https://rapidapi.com/totigm/api/candlestick-chart/pricing) and subscribe to a plan of your choice. Note that the basic plan will allow you to tweet with charts' images every 20 minutes.
+-   Copy your `x-rapidapi-key` key from the code snippet that you can find [in the API page](https://rapidapi.com/totigm/api/candlestick-chart). If you are having trouble finding the RapidAPI key, watch [this video](https://www.youtube.com/watch?v=t1lbJvoPxwM).
+-   Create a file named `.env` at the repo's root directory and paste the keys from the previous steps in it (It should look like [`.env.example`](.env.example)).
 -   Open your console inside the directory.
 -   Run `yarn` or `npm i` to install the project's dependencies.
 -   Go to the `index.ts` file and choose the cryptocurrency you want, you can also change the time between tweets. Go to the [⚙️ Bot options](#⚙️-bot-options) section to see how to customize your bot.
@@ -39,7 +42,7 @@ You can achieve this with just one line of code! Simply choose a coin, a time in
 
 Your bot can be customized if you want it to have a different behaviour. The options that it supports right now are:
 
-![Crypto bot options](https://user-images.githubusercontent.com/68404335/143305475-f79f4218-e51f-47e3-8edd-1799b279bbca.png)
+![Crypto bot options](https://user-images.githubusercontent.com/64804554/143328560-cee24984-44fd-4f8f-b624-2e608f4fbe97.png)
 
 <table>
     <thead>
@@ -138,6 +141,54 @@ Your bot can be customized if you want it to have a different behaviour. The opt
                 </td>
                 <td>true</td>
                 <td>Boolean</td>
+            </tr>
+        </div>
+        <div id="chartOptions">
+            <tr>
+                <td rowspan="3">
+                    <b>chartOptions</b>
+                </td>
+            </tr>
+            <tr>
+                <td>interval</td>
+                <td>
+                    Time interval for each candle.  
+                    <ul>
+                        <li>m: Minutes</li>
+                        <li>h: Hours</li>
+                        <li>d: Days</li>
+                        <li>w: Weeks</li>
+                        <li>M: Months</li>
+                    </ul>
+                </td>
+                <td>1m</td>
+                <td>
+                    <ul>
+                        <li>1m</li>
+                        <li>3m</li>
+                        <li>5m</li>
+                        <li>15m</li>
+                        <li>30m</li>
+                        <li>1h</li>
+                        <li>2h</li>
+                        <li>4h</li>
+                        <li>6h</li>
+                        <li>8h</li>
+                        <li>12h</li>
+                        <li>1d</li>
+                        <li>3d</li>
+                        <li>1w</li>
+                        <li>1M</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>limit</td>
+                <td>
+                    Amount of candles in the chart
+                </td>
+                <td>16</td>
+                <td>Integer. Maximum 1000</td>
             </tr>
         </div>
     </tbody>
