@@ -7,8 +7,9 @@
         "start": "npm run dev",
         "build": "tsc",
         "dev": "nodemon",
-        "preprod": "npm run build",
-        "prod": "node ./build/index.js",
+        "clean": "rm -rf ./dist/* ",
+        "prod": "npm run build && npm run start:prod",
+        "start:prod": "node ./dist/index.js",
         "lint": "eslint src && prettier --check src",
         "lint:fix": "eslint src --fix && prettier --write src"
     },
