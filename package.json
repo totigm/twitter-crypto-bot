@@ -7,9 +7,9 @@
         "start": "npm run dev",
         "build": "tsc",
         "dev": "nodemon",
-        "clean": "rm -rf ./dist/* ",
+        "clean": "rm -rf ./build/* ",
         "prod": "npm run build && npm run start:prod",
-        "start:prod": "node ./dist/index.js",
+        "start:prod": "node ./build/index.js",
         "lint": "eslint src && prettier --check src",
         "lint:fix": "eslint src --fix && prettier --write src"
     },
