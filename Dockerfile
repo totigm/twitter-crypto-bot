@@ -16,7 +16,7 @@ ENV NODE_ENV=production
 
 WORKDIR /app
 
-COPY --from=builder ./app/dist ./dist 
+COPY --from=builder ./app/build ./build 
 COPY package*.json .
 COPY .env .
 
