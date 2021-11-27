@@ -33,9 +33,9 @@ export default class CryptoData {
         ) as PriceData;
     }
 
-    public async getImageUrl(lastPrice?: number): Promise<string> {
+    public async getImageUrl(lastCandlePrice?: number): Promise<string> {
         const params = {
-            lastPrice,
+            lastPrice: lastCandlePrice,
             symbol: `${this.code}USDT`,
             ...this.chartOptions,
         };
