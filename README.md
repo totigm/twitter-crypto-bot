@@ -212,7 +212,9 @@ When you saw the first example, you might have noticed that the tweet interval w
 
 ## 💖 Support the project
 
-If you like what we do and want to encourage us to continue creating stuff, starring and sharing this project would be really appreciated!
+If you like what we do and want to encourage us to continue creating stuff, starring and sharing this project would be really appreciated! Also, if you want to support us a little bit more, you can [buy us a coffe](https://www.buymeacoffee.com/pamboo), or make a BTC tip to the following address: `1E6ZBxA8c32YwJxiWW4ohvm9oVYqqWh5tU`
+
+[![Buy us a coffe](https://user-images.githubusercontent.com/64804554/143627395-6e441486-8efc-47cd-b40a-f3bb9ef777ee.png)](https://www.buymeacoffee.com/pamboo)
 
 ## ✨ Contributing
 
