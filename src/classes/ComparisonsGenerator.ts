@@ -31,10 +31,6 @@ export default class ComparisonsGenerator {
         return comparisons;
     }
 
-    public getLastTweetPrice() {
-        return this.lastTweetPrice;
-    }
-
     public setLastTweetPrice(price: number) {
         this.lastTweetPrice = price;
     }
