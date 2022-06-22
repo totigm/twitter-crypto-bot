@@ -28,13 +28,13 @@ Before submitting **bug reports**, **documentation improvements requests**, **fe
 ### Branching Model
 
 - **Main**: Accepts merges from Features/Issues and Hotfixes
-- **Features/Issues**: Always branch off from Main
+- **Features/Issues**: Always branch off from `main`
 
   - Prefix: `${action}/*`. E.g.: `add/new-charts`, `fix/tweet-message`
 
   > Actions available: `add`, `update`, `fix`, and `remove`
 
-- **Hotfix**: Always branch off from Main
+- **Hotfix**: Always branch off from `main`
 
   - Prefix: `hotfix/*` e.g.: `hotfix/remove-duplicate-tweet`
 
