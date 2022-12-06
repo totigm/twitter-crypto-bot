@@ -1,5 +1,5 @@
 # Build TS project into JS code
-FROM node:16-alpine AS builder
+FROM node:18-alpine AS builder
 
 WORKDIR /app
 
@@ -10,7 +10,7 @@ RUN npm install \
     && npm run build
 
 # Get JS code and install production dependencies only
-FROM node:16-alpine AS production
+FROM node:18-alpine AS production
 
 ENV NODE_ENV=production
 
